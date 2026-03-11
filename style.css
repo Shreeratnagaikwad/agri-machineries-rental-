@@ -1,42 +1,34 @@
-const machinery = [
-    { id: 1, name: "Mahindra Arjun 555", type: "Tractor", rate: 800, location: "Pune, MH", img: "images/tractor1.jpg", desc: "50 HP powerful tractor for deep plowing." },
-    { id: 2, name: "John Deere 5310", type: "Tractor", rate: 950, location: "Nashik, MH", img: "images/tractor2.jpg", desc: "Top tier performance for heavy loads." },
-    { id: 3, name: "Kubota Harvester", type: "Harvester", rate: 2500, location: "Amritsar, PB", img: "images/harvester1.jpg", desc: "Efficient grain harvesting with minimal waste." },
-    { id: 4, name: "Rotavator Pro", type: "Tiller", rate: 400, location: "Nagpur, MH", img: "images/tiller1.jpg", desc: "Perfect for soil preparation." },
-    { id: 5, name: "Sonalika Tiger", type: "Tractor", rate: 750, location: "Indore, MP", img: "images/tractor3.jpg", desc: "Fuel efficient and versatile." },
-    { id: 6, name: "Power Tiller", type: "Tiller", rate: 300, location: "Surat, GJ", img: "images/tiller2.jpg", desc: "Small scale farming specialist." },
-    { id: 7, name: "Paddy Transplanter", type: "Planter", rate: 1200, location: "Kochi, KL", img: "images/planter1.jpg", desc: "Automated rice planting." },
-    { id: 8, name: "Seed Drill", type: "Sower", rate: 500, location: "Ludhiana, PB", img: "images/sower1.jpg", desc: "Precision seed spacing." },
-    { id: 9, name: "Baler Machine", type: "Baler", rate: 1500, location: "Hisar, HR", img: "images/baler1.jpg", desc: "Straw management and baling." },
-    { id: 10, name: "Backhoe Loader", type: "Digger", rate: 1800, location: "Patna, BR", img: "images/digger1.jpg", desc: "For farm construction and drainage." }
-];
-
-const container = document.getElementById('machinery-container');
-
-machinery.forEach(item => {
-    container.innerHTML += `
-        <div class="card" onclick="showDetails(${item.id})">
-            <img src="${item.img}" alt="${item.name}">
-            <h3>${item.name}</h3>
-            <p><strong>Location:</strong> ${item.location}</p>
-            <p class="price">₹${item.rate} / hr</p>
-            <button>View Details</button>
-        </div>
-    `;
-});
-
-function showDetails(id) {
-    const item = machinery.find(m => m.id === id);
-    const modal = document.getElementById('detail-modal');
-    document.getElementById('modal-body').innerHTML = `
-        <h2>${item.name}</h2>
-        <img src="${item.img}" style="width:100%; max-height:300px; object-fit:contain;">
-        <p>${item.desc}</p>
-        <p><strong>Rate:</strong> ₹${item.rate} per hour</p>
-        <p><strong>Current Location:</strong> ${item.location}</p>
-        <button onclick="alert('Booking feature coming soon!')">Book Now</button>
-    `;
-    modal.style.display = "block";
+:root {
+    --primary: #2e7d32;
+    --secondary: #f9fbf9;
+    --accent: #ffa000;
+    --text: #333;
+    --shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-document.querySelector('.close').onclick = () => document.getElementById('detail-modal').style.display = "none";
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { font-family: 'Inter', sans-serif; background: var(--secondary); color: var(--text); line-height: 1.6; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+header { background: white; box-shadow: var(--shadow); padding: 1rem 0; }
+nav { display: flex; justify-content: space-around; align-items: center; }
+.logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+.logo span { color: var(--accent); }
+
+.hero { text-align: center; padding: 60px 20px; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1000'); background-size: cover; color: white; }
+
+#machine-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+
+.card { background: white; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); transition: transform 0.3s; }
+.card:hover { transform: translateY(-5px); }
+.card img { width: 100%; height: 200px; object-fit: cover; }
+
+.content { padding: 20px; }
+.price-tag { font-size: 1.25rem; color: var(--primary); font-weight: 700; }
+.specs { font-size: 0.85rem; color: #666; margin: 10px 0; }
+.badge { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; background: #e8f5e9; color: var(--primary); margin-bottom: 10px; }
+
+.btn-rent { width: 100%; padding: 12px; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; }
+.btn-rent:hover { background: #1b5e20; }
