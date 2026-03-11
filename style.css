@@ -1,25 +1,42 @@
-:root {
-    --primary: #2d5a27; /* Farm Green */
-    --accent: #f4a261;  /* Earthy Orange */
-    --light: #f8f9fa;
+const machinery = [
+    { id: 1, name: "Mahindra Arjun 555", type: "Tractor", rate: 800, location: "Pune, MH", img: "images/tractor1.jpg", desc: "50 HP powerful tractor for deep plowing." },
+    { id: 2, name: "John Deere 5310", type: "Tractor", rate: 950, location: "Nashik, MH", img: "images/tractor2.jpg", desc: "Top tier performance for heavy loads." },
+    { id: 3, name: "Kubota Harvester", type: "Harvester", rate: 2500, location: "Amritsar, PB", img: "images/harvester1.jpg", desc: "Efficient grain harvesting with minimal waste." },
+    { id: 4, name: "Rotavator Pro", type: "Tiller", rate: 400, location: "Nagpur, MH", img: "images/tiller1.jpg", desc: "Perfect for soil preparation." },
+    { id: 5, name: "Sonalika Tiger", type: "Tractor", rate: 750, location: "Indore, MP", img: "images/tractor3.jpg", desc: "Fuel efficient and versatile." },
+    { id: 6, name: "Power Tiller", type: "Tiller", rate: 300, location: "Surat, GJ", img: "images/tiller2.jpg", desc: "Small scale farming specialist." },
+    { id: 7, name: "Paddy Transplanter", type: "Planter", rate: 1200, location: "Kochi, KL", img: "images/planter1.jpg", desc: "Automated rice planting." },
+    { id: 8, name: "Seed Drill", type: "Sower", rate: 500, location: "Ludhiana, PB", img: "images/sower1.jpg", desc: "Precision seed spacing." },
+    { id: 9, name: "Baler Machine", type: "Baler", rate: 1500, location: "Hisar, HR", img: "images/baler1.jpg", desc: "Straw management and baling." },
+    { id: 10, name: "Backhoe Loader", type: "Digger", rate: 1800, location: "Patna, BR", img: "images/digger1.jpg", desc: "For farm construction and drainage." }
+];
+
+const container = document.getElementById('machinery-container');
+
+machinery.forEach(item => {
+    container.innerHTML += `
+        <div class="card" onclick="showDetails(${item.id})">
+            <img src="${item.img}" alt="${item.name}">
+            <h3>${item.name}</h3>
+            <p><strong>Location:</strong> ${item.location}</p>
+            <p class="price">₹${item.rate} / hr</p>
+            <button>View Details</button>
+        </div>
+    `;
+});
+
+function showDetails(id) {
+    const item = machinery.find(m => m.id === id);
+    const modal = document.getElementById('detail-modal');
+    document.getElementById('modal-body').innerHTML = `
+        <h2>${item.name}</h2>
+        <img src="${item.img}" style="width:100%; max-height:300px; object-fit:contain;">
+        <p>${item.desc}</p>
+        <p><strong>Rate:</strong> ₹${item.rate} per hour</p>
+        <p><strong>Current Location:</strong> ${item.location}</p>
+        <button onclick="alert('Booking feature coming soon!')">Book Now</button>
+    `;
+    modal.style.display = "block";
 }
 
-body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--light); }
-
-nav { display: flex; justify-content: space-between; padding: 20px 5%; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-
-.hero { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero.jpg'); 
-        height: 400px; color: white; display: flex; flex-direction: column; 
-        justify-content: center; align-items: center; text-align: center; }
-
-.grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 5%; }
-
-.card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: 0.3s; }
-.card:hover { transform: translateY(-5px); }
-.card img { width: 100%; height: 200px; object-fit: cover; }
-.card-content { padding: 15px; }
-
-.price { color: var(--primary); font-weight: bold; font-size: 1.2rem; }
-.location { color: #666; font-size: 0.9rem; margin-bottom: 10px; }
-
-button { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%; }
+document.querySelector('.close').onclick = () => document.getElementById('detail-modal').style.display = "none";
