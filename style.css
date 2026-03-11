@@ -1,0 +1,25 @@
+:root {
+    --primary: #2d5a27; /* Farm Green */
+    --accent: #f4a261;  /* Earthy Orange */
+    --light: #f8f9fa;
+}
+
+body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--light); }
+
+nav { display: flex; justify-content: space-between; padding: 20px 5%; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+
+.hero { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero.jpg'); 
+        height: 400px; color: white; display: flex; flex-direction: column; 
+        justify-content: center; align-items: center; text-align: center; }
+
+.grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 5%; }
+
+.card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: 0.3s; }
+.card:hover { transform: translateY(-5px); }
+.card img { width: 100%; height: 200px; object-fit: cover; }
+.card-content { padding: 15px; }
+
+.price { color: var(--primary); font-weight: bold; font-size: 1.2rem; }
+.location { color: #666; font-size: 0.9rem; margin-bottom: 10px; }
+
+button { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%; }
