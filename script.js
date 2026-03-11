@@ -1,34 +1,37 @@
-:root {
-    --primary: #2e7d32;
-    --secondary: #f9fbf9;
-    --accent: #ffa000;
-    --text: #333;
-    --shadow: 0 4px 12px rgba(0,0,0,0.1);
+const machines = [
+    { name: "John Deere 5050D", type: "Tractor", price: 500, loc: "Riverside Farm", cond: "Excellent", service: "Includes experienced driver", img: "machine1.jpg" },
+    { name: "Mahindra Arjun 555", type: "Tractor", price: 450, loc: "Green Valley", cond: "Good", service: "Dry hire only", img: "machine2.jpg" },
+    { name: "Kubota L-Series", type: "Compact Tractor", price: 300, loc: "North Hills", cond: "Mint", service: "Fuel tank full", img: "machine3.jpg" },
+    { name: "Precision Disc Plough", type: "Plough", price: 150, loc: "West Plains", cond: "Used", service: "Includes coupling check", img: "machine4.jpg" },
+    { name: "New Holland Combine", type: "Harvester", price: 1200, loc: "Central Hub", cond: "Excellent", service: "24/7 technical support", img: "machine5.jpg" },
+    { name: "Rotavator Z-Series", type: "Tiller", price: 200, loc: "South Meadow", cond: "Good", service: "Blades sharpened daily", img: "machine6.jpg" },
+    { name: "JCB 3CX Eco", type: "Backhoe Loader", price: 800, loc: "Quarry Lane", cond: "Excellent", service: "Operator included", img: "machine7.jpg" },
+    { name: "Seed Drill Pro", type: "Seeder", price: 180, loc: "East Fields", cond: "Good", service: "Calibration assistance", img: "machine8.jpg" },
+    { name: "Massey Ferguson 245", type: "Tractor", price: 400, loc: "Old Town", cond: "Fair", service: "Night lighting provided", img: "machine9.jpg" },
+    { name: "Baler 3000", type: "Hay Baler", price: 350, loc: "High Grasslands", cond: "Excellent", service: "Twine rolls included", img: "machine10.jpg" },
+    { name: "Case IH Magnum", type: "Heavy Tractor", price: 950, loc: "Summit Farm", cond: "Mint", service: "GPS guidance enabled", img: "machine11.jpg" },
+    { name: "Power Sprayer X1", type: "Sprayer", price: 100, loc: "Orchard Park", cond: "Good", service: "Nozzle cleaning kit", img: "machine12.jpg" },
+    { name: "Vermeer Mower", type: "Disc Mower", price: 250, loc: "Brookside", cond: "New", service: "Safety gear provided", img: "machine13.jpg" },
+    { name: "Tipping Trailer", type: "Utility Vehicle", price: 120, loc: "East Gate", cond: "Robust", service: "Hydraulic check done", img: "machine14.jpg" }
+];
+
+function loadMachines() {
+    const grid = document.getElementById('machine-grid');
+    grid.innerHTML = machines.map(m => `
+        <div class="card">
+            <img src="images/${m.img}" alt="${m.name}" onerror="this.src='https://via.placeholder.com/300x200?text=AgriRent+Machine'">
+            <div class="content">
+                <span class="badge">${m.type}</span>
+                <h3>${m.name}</h3>
+                <p class="specs">📍 ${m.loc} | ✨ Condition: ${m.cond}</p>
+                <p><strong>Service:</strong> ${m.service}</p>
+                <div style="margin: 15px 0; display: flex; justify-content: space-between; align-items: center;">
+                    <span class="price-tag">₹${m.price}/hr</span>
+                </div>
+                <button class="btn-rent" onclick="alert('Booking request sent for ${m.name}!')">Rent Now</button>
+            </div>
+        </div>
+    `).join('');
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-body { font-family: 'Inter', sans-serif; background: var(--secondary); color: var(--text); line-height: 1.6; }
-
-.container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
-
-header { background: white; box-shadow: var(--shadow); padding: 1rem 0; }
-nav { display: flex; justify-content: space-around; align-items: center; }
-.logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
-.logo span { color: var(--accent); }
-
-.hero { text-align: center; padding: 60px 20px; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1000'); background-size: cover; color: white; }
-
-#machine-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-
-.card { background: white; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); transition: transform 0.3s; }
-.card:hover { transform: translateY(-5px); }
-.card img { width: 100%; height: 200px; object-fit: cover; }
-
-.content { padding: 20px; }
-.price-tag { font-size: 1.25rem; color: var(--primary); font-weight: 700; }
-.specs { font-size: 0.85rem; color: #666; margin: 10px 0; }
-.badge { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; background: #e8f5e9; color: var(--primary); margin-bottom: 10px; }
-
-.btn-rent { width: 100%; padding: 12px; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; }
-.btn-rent:hover { background: #1b5e20; }
+document.addEventListener('DOMContentLoaded', loadMachines);
