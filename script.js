@@ -1,33 +1,41 @@
-const machineryData = [
-    { id: 1, name: "John Deere 5050E", price: 800, location: "Pune, MH", img: "images/tractor1.jpg" },
-    { id: 2, name: "Mahindra Arjun 555", price: 750, location: "Nashik, MH", img: "images/tractor2.jpg" },
-    { id: 3, name: "Rotavator - 7 Feet", price: 300, location: "Satara, MH", img: "images/tool1.jpg" },
-    { id: 4, name: "Combine Harvester", price: 2500, location: "Sangli, MH", img: "images/harvester.jpg" },
-    { id: 5, name: "Power Tiller", price: 400, location: "Kolhapur, MH", img: "images/tiller.jpg" },
-    { id: 6, name: "Swaraj 855 FE", price: 700, location: "Nagpur, MH", img: "images/tractor3.jpg" },
-    { id: 7, name: "Seed Drill", price: 350, location: "Solapur, MH", img: "images/tool2.jpg" },
-    { id: 8, name: "Mini Tractor", price: 500, location: "Ahmednagar, MH", img: "images/mini.jpg" },
-    { id: 9, name: "Rice Transplanter", price: 1200, location: "Raigad, MH", img: "images/rice.jpg" },
-    { id: 10, name: "Pesticide Sprayer (Drone)", price: 1500, location: "Aurangabad, MH", img: "images/drone.jpg" }
-];
-
-const grid = document.getElementById('machinery-grid');
-
-machineryData.forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-        <img src="${item.img}" alt="${item.name}">
-        <div class="card-content">
-            <h3>${item.name}</h3>
-            <p class="location">📍 ${item.location}</p>
-            <p class="price">₹${item.price} / hr</p>
-            <button onclick="viewDetails(${item.id})">View Details</button>
-        </div>
-    `;
-    grid.appendChild(card);
-});
-
-function viewDetails(id) {
-    alert("Redirecting to detailed info for machinery ID: " + id + "\nIn a full build, this would open a new page!");
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: #f4f7f2;
 }
+
+header {
+    background: #2e7d32;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+#machinery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 15px;
+    transition: 0.3s;
+}
+
+.card:hover { transform: translateY(-5px); }
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.price { color: #2e7d32; font-weight: bold; font-size: 1.2rem; }
+
+.modal { display: none; position: fixed; z-index: 1; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
+.modal-content { background: white; margin: 10% auto; padding: 20px; width: 70%; border-radius: 10px; }
