@@ -33,4 +33,5 @@ function loadMachines() {
         </div>
     `).join('');
 }
-});
+
+document.addEventListener('DOMContentLoaded', loadMachines);
