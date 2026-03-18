@@ -32,6 +32,7 @@ nav { display: flex; justify-content: space-around; align-items: center; }
 
 .btn-rent { width: 100%; padding: 12px; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; }
 .btn-rent:hover { background: #1b5e20; }
+
 /* Profile Section Styling */
 .profile-header {
     text-align: center;
