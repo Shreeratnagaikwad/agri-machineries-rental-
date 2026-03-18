@@ -33,15 +33,4 @@ function loadMachines() {
         </div>
     `).join('');
 }
-
-document.addEventListener('DOMContentLoaded', loadMachines);
-// Verification script for Student Profile
-document.addEventListener('DOMContentLoaded', () => {
-    const studentName = "Shreeratna.A.Gaikwad";
-    const prn = "BSFU125029";
-    
-    console.log("Portfolio Loaded: " + studentName + " (PRN: " + prn + ")");
-    
-    // Optional: Alert or Welcome message
-    // alert("Welcome to the profile of " + studentName);
 });
