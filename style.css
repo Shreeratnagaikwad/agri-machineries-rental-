@@ -32,26 +32,3 @@ nav { display: flex; justify-content: space-around; align-items: center; }
 
 .btn-rent { width: 100%; padding: 12px; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; }
 .btn-rent:hover { background: #1b5e20; }
-
-/* Profile Section Styling */
-.profile-header {
-    text-align: center;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-bottom: 2px solid #ddd;
-}
-
-#profile-img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%; /* Makes the image square */
-    object-fit: cover;
-    border: 3px solid #333;
-    margin-bottom: 15px;
-}
-
-.student-info {
-    font-size: 1.1rem;
-    color: #555;
-    margin: 5px 0;
-}
